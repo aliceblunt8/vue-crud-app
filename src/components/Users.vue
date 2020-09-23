@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/editing" class="button">Add user</router-link>
+    <router-link to="/user" class="button">Add users</router-link>
     <table class="table">
       <thead>
         <tr>
@@ -17,6 +17,7 @@
           v-for="user of users"
           :key="user.id"
           :user="user"
+          @remove-user="removeUser"
         />
       </tbody>
    </table>
@@ -31,17 +32,27 @@ export default {
   components: {
     User,
   },
+  mounted() {
+    if (!localStorage.users) {
+      localStorage.setItem('users', JSON.stringify(this.users));
+    } else {
+      this.users = JSON.parse(localStorage.getItem('users'));
+    }
+  },
   data() {
     return {
       users: [
-        { name: 'Harry', surname: 'Potter', phone: '063988888', email: 'potter@gmail.com'},
-        { name: 'Hermione', surname: 'Granger', phone: '06398855366', email: 'granger@gmail.com'},
-        { name: 'Ronald', surname: 'Weasley', phone: '0639994366', email: 'weasley@gmail.com'}
+        { id: 1, name: 'Harry', surname: 'Potter', phone: '063988888', email: 'potter@gmail.com'},
+        { id: 2, name: 'Hermione', surname: 'Granger', phone: '06398855366', email: 'granger@gmail.com'},
+        { id: 3, name: 'Ronald', surname: 'Weasley', phone: '0639994366', email: 'weasley@gmail.com'}
       ],
     }
   },
   methods: {
-
+    removeUser(id){
+      this.users = this.users.filter(person => person.id !== id);
+      localStorage.setItem('users', JSON.stringify(this.users));
+    },
   }
 }
 </script>

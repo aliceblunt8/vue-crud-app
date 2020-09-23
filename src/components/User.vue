@@ -1,11 +1,21 @@
 <template>
   <tr>
-   <td>{{ user.name }}</td>
-   <td>{{ user.surname }}</td> 
-   <td>{{ user.phone }}</td> 
-   <td>{{ user.email }}</td> 
-   <td><button>Edit</button></td>
-   <td><button>X</button></td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.surname }}</td> 
+    <td>{{ user.phone }}</td> 
+    <td>{{ user.email }}</td> 
+    <td>
+      <button class="button-edit"
+        @click="$router.push(`/user/${user.id}`)">Edit</button>
+    </td>
+    <td>
+      <button
+        @click="$emit('remove-user', user.id)"
+        class="button-delete"
+      >
+        X
+      </button>
+    </td>
   </tr>
 </template>
 
@@ -59,5 +69,24 @@ tbody tr:hover {
   padding: 0;
   outline: none;
   max-width: 100%;
+}
+
+.button-edit,
+.button-delete {
+  border: 1px solid #808080;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.button-edit:hover{
+  background-color: #fff;
+}
+
+.button-delete:hover{
+  background-color: #e25644;
 }
 </style>
