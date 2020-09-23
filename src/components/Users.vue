@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link to="/user" class="button">Add users</router-link>
-    <table class="table">
+    <table v-if="users.length > 0" class="table">
       <thead>
         <tr>
         <th>Name</th>
@@ -21,6 +21,7 @@
         />
       </tbody>
    </table>
+   <p v-else>No users</p>
   </div>
 </template>
 
@@ -73,10 +74,10 @@ export default {
 }
 
 .table {
+  margin: 30px auto;
   border-collapse: collapse;
   min-width: 600px;
   max-width: 1000px;
-  margin-top: 30px;
 }
 
 thead tr:first-child {

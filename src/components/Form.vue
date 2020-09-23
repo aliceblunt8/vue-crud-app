@@ -98,9 +98,9 @@ export default {
       }
 
       if (this.json) {
-        const newUsers = JSON.parse(this.json).map(person => ({
+        const newUsers = JSON.parse(this.json).map((person, i) => ({
             ...person,
-           id: Date.now()
+           id: Date.now() + i,
           }));
         this.users = this.users.concat(newUsers);
       }
@@ -114,7 +114,7 @@ export default {
 
 <style scoped>
 form {
-  margin-top: 30px;
+  margin: 30px auto;
   background: #f5f5f5;
   align-self: flex-start;
   color: #808080;
@@ -125,7 +125,6 @@ form {
   flex-direction: column;
   width: 300px;
   position: relative;
-  margin-left: 24px;
 }
 
 .title {

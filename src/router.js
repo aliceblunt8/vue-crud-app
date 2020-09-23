@@ -6,7 +6,7 @@ import Form from '@/components/Form'
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '/user',
@@ -21,6 +21,5 @@ export default new Router({
       path: '/',
       component: Users,
     },
-    
   ]
 })
