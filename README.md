@@ -1,6 +1,9 @@
 # vue-crud-app
 
-## Project setup
+- [DEMO LINK](https://aliceblunt8.github.io/vue-crud-app/#/)
+
+
+### Project setup
 ```
 npm install
 ```
